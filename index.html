@@ -13,7 +13,7 @@
 <meta property="og:image" content="og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -84,9 +84,11 @@
   <div class="wrap">
     <h2 id="poster-h" data-i18n="posterH">The poster</h2>
     <p class="sub" data-i18n="posterSub">
-      The whole project on one sheet, as presented at the 13th Engineering Design Day and
-      updated for the current build. It is an A0 poster, so open it full size to read it
-      properly &mdash; on a phone the version below is an overview.
+      The whole project on one sheet. <strong>This is not the poster that was shown at the
+      13th Engineering Design Day</strong> &mdash; it has been revised since, to match the
+      improvements made after the event: the soldered board in place of the breadboard, the
+      smaller fan on a battery, and the new nozzle and tube. It is a large-format poster, so
+      open it full size to read it properly; the version below is an overview.
     </p>
 
     <figure class="poster">
@@ -98,11 +100,19 @@
              data-i18n-alt="posterAlt">
       </picture>
       <figcaption>
-        <a href="poster-full.jpg" target="_blank" rel="noopener" data-i18n="posterFull">
+        <a class="poster-open" href="poster-full.jpg" target="_blank" rel="noopener" data-i18n="posterFull">
           Open the poster at full size &mdash; 2400 px
         </a>
       </figcaption>
     </figure>
+
+    <!-- kept well clear of the button above so nobody taps it by accident -->
+    <p class="poster-archive">
+      <span data-i18n="posterOldLead">Looking for the version actually presented at the event?</span>
+      <a href="poster-original.jpg" target="_blank" rel="noopener" data-i18n="posterOld">
+        The old poster, as shown at the 13th Engineering Design Day
+      </a>
+    </p>
   </div>
 </section>
 
@@ -634,7 +644,7 @@
   <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo" data-i18n-aria="lbNext">&#8250;</button>
 </div>
 
-<script src="script.js?v=7" charset="utf-8" defer></script>
+<script src="script.js?v=8" charset="utf-8" defer></script>
 
 <!-- GoatCounter analytics -->
 <script data-goatcounter="https://eegbci.goatcounter.com/count"
