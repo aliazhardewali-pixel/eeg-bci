@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EEG Brain–Computer Interface — University of Duhok</title>
+<meta name="description" content="A brain–computer interface that turns concentration into motor speed. One EEG electrode, an ESP32 and a fan — thought to movement in under a tenth of a second. Biomedical Engineering, University of Duhok. MEDICO 2026, Erbil.">
+<meta name="theme-color" content="#0B0F16">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="EEG Brain–Computer Interface">
+<meta property="og:description" content="Control a machine with your mind — no movement, no touch. Biomedical Engineering, University of Duhok. MEDICO 2026, Erbil.">
+<meta property="og:image" content="og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="wrap">
+
+    <div class="hero-top">
+      <p class="eyebrow" data-i18n="eyebrow">University of Duhok &middot; Biomedical Engineering</p>
+      <button type="button" class="langbtn" id="langBtn" lang="ar">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</button>
+    </div>
+
+    <h1 data-i18n="h1">EEG Brain&#8211;Computer Interface</h1>
+
+    <p class="lede" data-i18n="lede">Control a machine with your mind &mdash; no movement, no touch.</p>
+
+    <p class="lede-sub" data-i18n="ledeSub">
+      One electrode on the forehead reads your concentration. A fan speeds up.
+      A ball rises inside a tube. Nothing is pressed, spoken or moved.
+    </p>
+
+    <!-- VIDEO — put the YouTube ID in script.js -->
+    <div class="video" id="video">
+      <button class="video-btn" type="button" id="videoBtn"
+              aria-label="Play the demonstration video" data-i18n-aria="videoBtnAria">
+        <picture>
+          <source srcset="video-poster.webp" type="image/webp">
+          <img src="video-poster.jpg" width="1120" height="630" fetchpriority="high"
+               data-ph="video-poster.jpg &middot; 1120 &times; 630"
+               alt="The system laid out on a bench: the EEG headset, the tube on its 3D-printed nozzle with the yellow fan beneath it, and the mint-green brain-shaped enclosure."
+               data-i18n-alt="videoPosterAlt">
+        </picture>
+        <span class="play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="30" height="30"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+        </span>
+        <span class="video-tag" id="videoTag" data-i18n="videoTag">Watch the demo</span>
+      </button>
+    </div>
+
+    <p class="badge">
+      <span class="badge-dot" aria-hidden="true"></span>
+      <span data-i18n="badge">Selected for <strong>MEDICO 2026</strong>, Erbil &middot; MedStar section</span>
+    </p>
+
+  </div>
+</header>
+
+<!-- logos -->
+<div class="logostrip">
+  <div class="wrap">
+    <span class="lg lg-tall"><img src="logo-uod.png" alt="University of Duhok"
+         width="180" height="180" loading="lazy" data-ph="logo-uod.png"></span>
+    <span class="lg"><img src="logo-thm.png" alt="Technische Hochschule Mittelhessen"
+         width="420" height="140" loading="lazy" data-ph="logo-thm.png"></span>
+    <span class="lg"><img src="logo-medico.png" alt="MEDICO 2026 — Erbil International Health Exhibition"
+         width="560" height="191" loading="lazy" data-ph="logo-medico.png"></span>
+    <span class="lg"><img src="logo-medstars.png" alt="MedStars"
+         width="420" height="140" loading="lazy" data-ph="logo-medstars.png"></span>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ==================== THE POSTER ==================== -->
+<section class="band" aria-labelledby="poster-h">
+  <div class="wrap">
+    <h2 id="poster-h" data-i18n="posterH">The poster</h2>
+    <p class="sub" data-i18n="posterSub">
+      The whole project on one sheet, as presented at the 13th Engineering Design Day and
+      updated for the current build. It is an A0 poster, so open it full size to read it
+      properly &mdash; on a phone the version below is an overview.
+    </p>
+
+    <figure class="poster">
+      <picture>
+        <source srcset="poster.webp" type="image/webp">
+        <img src="poster.jpg" loading="lazy" width="700" height="1000"
+             data-ph="poster.jpg &middot; 700 &times; 1000"
+             alt="The project poster: title, abstract, system architecture diagram, hardware component list with photographs, a five-step methodology flow, photographs of the dashboard and the system in use, results, conclusion and references."
+             data-i18n-alt="posterAlt">
+      </picture>
+      <figcaption>
+        <a href="poster-full.jpg" target="_blank" rel="noopener" data-i18n="posterFull">
+          Open the poster at full size &mdash; 1800 px
+        </a>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="band" aria-labelledby="how-h">
+  <div class="wrap">
+    <h2 id="how-h" data-i18n="howH">How it works</h2>
+    <p class="sub" data-i18n="howSub">Five steps, from a thought to a moving motor.</p>
+
+    <ol class="flow">
+      <li>
+        <span class="flow-n" aria-hidden="true">1</span>
+        <div class="flow-body">
+          <h3 data-i18n="s1h">Your brain</h3>
+          <p data-i18n="s1p">Thinking makes neurons fire together. That produces electrical activity at the
+             scalp measured in millionths of a volt.</p>
+        </div>
+      </li>
+      <li>
+        <span class="flow-n" aria-hidden="true">2</span>
+        <div class="flow-body">
+          <h3 data-i18n="s2h">The headset</h3>
+          <p data-i18n="s2p">A NeuroSky MindWave Mobile 2 &mdash; one dry electrode on the forehead, one clip on
+             the ear. It splits the signal into eight frequency bands and sends them over
+             Bluetooth, once a second.</p>
+        </div>
+      </li>
+      <li>
+        <span class="flow-n" aria-hidden="true">3</span>
+        <div class="flow-body">
+          <h3 data-i18n="s3h">The laptop</h3>
+          <p data-i18n="s3p">A Python program weighs the focus bands (Beta) against the relaxation bands
+             (Alpha and Theta). The ratio becomes one number between 0 and 100, sent to the
+             microcontroller every 30 milliseconds.</p>
+        </div>
+      </li>
+      <li>
+        <span class="flow-n" aria-hidden="true">4</span>
+        <div class="flow-body">
+          <h3 data-i18n="s4h">The ESP32</h3>
+          <p data-i18n="s4p">That number sets how fast the fan turns, using 25&nbsp;kHz PWM through a MOSFET.
+             The switching frequency sits above human hearing, so the fan is silent.</p>
+        </div>
+      </li>
+      <li>
+        <span class="flow-n" aria-hidden="true">5</span>
+        <div class="flow-body">
+          <h3 data-i18n="s5h">The fan and tube</h3>
+          <p data-i18n="s5p">Air rises through a 3D-printed nozzle and holds a 2.7&nbsp;g ping-pong ball in the
+             air. Concentrate and it climbs. Relax and it falls. The whole loop takes
+             60&ndash;100 milliseconds.</p>
+        </div>
+      </li>
+    </ol>
+
+    <!-- interactive illustration -->
+    <div class="try">
+      <div class="try-head">
+        <h3 data-i18n="tryH">Try the mapping</h3>
+        <p data-i18n="tryP">Drag to change the focus value. The duty cycle is calculated exactly the way the
+           firmware on the ESP32 calculates it. The tube is an illustration.</p>
+      </div>
+
+      <div class="try-body">
+        <div class="tube" aria-hidden="true">
+          <span class="tube-ball" id="ball"></span>
+          <span class="tube-fan" id="fan"></span>
+        </div>
+
+        <div class="try-ctl">
+          <label class="try-label" for="focus" data-i18n="tryLabel">Focus</label>
+          <input type="range" id="focus" min="0" max="100" value="55" step="1"
+                 aria-describedby="readout">
+          <div class="readout" id="readout" aria-live="polite">
+            <p><span class="rd-n" id="rdFocus">55</span><span class="rd-u" data-i18n="unitFocus">% focus</span></p>
+            <p><span class="rd-n" id="rdDuty">185</span><span class="rd-u" data-i18n="unitDuty">/ 255 duty cycle</span></p>
+            <p class="rd-state" id="rdState" data-i18n="stateOn">Fan running</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== WHY IT MATTERS ==================== -->
+<section class="band alt" aria-labelledby="why-h">
+  <div class="wrap">
+    <h2 id="why-h" data-i18n="whyH">Why this matters in healthcare</h2>
+    <p class="sub" data-i18n="whySub">
+      The ball is only there so you can see the signal. What the project actually built is a
+      control channel that starts in the brain and ends at a motor &mdash; and a motor is the part
+      that does the work in a wheelchair, in a prosthetic hand, in almost any assistive device.
+    </p>
+
+    <div class="cards">
+      <article class="card">
+        <h3 data-i18n="c1h">A prosthetic hand</h3>
+        <p data-i18n="c1p">
+          Take the fan off the end and put a robotic hand there instead. The same number from
+          0 to 100 that sets fan speed can set how far the fingers close. This is the project's
+          declared next step.
+        </p>
+      </article>
+      <article class="card">
+        <h3 data-i18n="c2h">Moving a wheelchair</h3>
+        <p data-i18n="c2p">
+          A powered wheelchair needs exactly what the fan needs: a motor told how fast to turn.
+          For someone who cannot hold or push a joystick, concentration is a control input that
+          does not require a hand.
+        </p>
+      </article>
+      <article class="card">
+        <h3 data-i18n="c3h">Asking for something</h3>
+        <p data-i18n="c3p">
+          Put four options on a screen &mdash; water, food, help, move me &mdash; and let the
+          focus level choose between them. For a person with ALS or a spinal-cord injury who has
+          lost movement but not thought, that is a way to be understood without speaking.
+        </p>
+      </article>
+    </div>
+
+    <p class="honest" data-i18n="honest">
+      <strong>Said plainly:</strong> none of those three are built yet, and a single electrode can
+      only tell how hard someone is concentrating &mdash; not what they are thinking. What is built
+      and working is the layer everything above would stand on: brain to motor, in under a tenth
+      of a second, from parts anyone can buy.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== THE PROTOTYPE ==================== -->
+<section class="band" aria-labelledby="proto-h">
+  <div class="wrap">
+    <h2 id="proto-h" data-i18n="protoH">The prototype</h2>
+    <p class="sub" data-i18n="protoSub">
+      The build has changed since it was first shown. The electronics have moved off the
+      breadboard onto a soldered board inside a 3D-printed brain-shaped enclosure, and the
+      big bench-powered fan has been replaced by a small one running on batteries. The first
+      four photos are the current version. The last is the stand running at the 13th
+      Engineering Design Day, University of Duhok, before those changes.
+    </p>
+
+    <div class="gallery" id="gallery">
+
+      <figure class="shot-item">
+        <button type="button" class="shot" aria-label="Open photo 1: the whole system on the bench."
+                data-i18n-aria="shot1Aria">
+          <picture>
+            <source srcset="bci-01.webp" type="image/webp">
+            <img src="bci-01.jpg" loading="lazy" width="620" height="827"
+                 data-ph="bci-01.jpg &middot; 620 &times; 827"
+                 alt="The whole system on a wooden bench: a laptop running the live brainwave dashboard, the EEG headset, the tube on its nozzle with the yellow fan, and the brain-shaped enclosure."
+                 data-i18n-alt="bci1Alt">
+          </picture>
+        </button>
+        <figcaption data-i18n="cap1">
+          <strong>Everything, current version.</strong> The laptop runs the live dashboard, the
+          headset feeds it, and the tube and enclosure sit beside it.
+        </figcaption>
+      </figure>
+
+      <figure class="shot-item">
+        <button type="button" class="shot" aria-label="Open photo 2: the tube and nozzle assembly."
+                data-i18n-aria="shot2Aria">
+          <picture>
+            <source srcset="bci-02.webp" type="image/webp">
+            <img src="bci-02.jpg" loading="lazy" width="620" height="827"
+                 data-ph="bci-02.jpg &middot; 620 &times; 827"
+                 alt="The airflow assembly upright: a white tube with a measuring scale along it, mounted on a black 3D-printed nozzle with the yellow fan visible underneath."
+                 data-i18n-alt="bci2Alt">
+          </picture>
+        </button>
+        <figcaption data-i18n="cap2">
+          <strong>The airflow assembly.</strong> A printed nozzle narrows the flow under the
+          tube, and the scale down the side reads how high the ball is sitting.
+        </figcaption>
+      </figure>
+
+      <figure class="shot-item">
+        <button type="button" class="shot" aria-label="Open photo 3: the brain-shaped enclosure."
+                data-i18n-aria="shot3Aria">
+          <picture>
+            <source srcset="bci-03.webp" type="image/webp">
+            <img src="bci-03.jpg" loading="lazy" width="620" height="827"
+                 data-ph="bci-03.jpg &middot; 620 &times; 827"
+                 alt="The mint-green 3D-printed brain-shaped enclosure holding the electronics, with a vent slot on top and a cable leaving the side."
+                 data-i18n-alt="bci3Alt">
+          </picture>
+        </button>
+        <figcaption data-i18n="cap3">
+          <strong>The enclosure.</strong> A printed brain shell now holds the soldered board
+          that replaced the breadboard, vented on top, one cable out of the side.
+        </figcaption>
+      </figure>
+
+      <figure class="shot-item">
+        <button type="button" class="shot" aria-label="Open photo 4: the microcontroller and the soldered board."
+                data-i18n-aria="shot5Aria">
+          <picture>
+            <source srcset="bci-05.webp" type="image/webp">
+            <img src="bci-05.jpg" loading="lazy" width="620" height="827"
+                 data-ph="bci-05.jpg &middot; 620 &times; 827"
+                 alt="The ESP32-WROOM-32 development board with a small soldered green board sitting on top of it, carrying two white three-pin connectors."
+                 data-i18n-alt="bci5Alt">
+          </picture>
+        </button>
+        <figcaption data-i18n="cap5">
+          <strong>The board that does the switching.</strong> The ESP32 with the soldered board
+          on top of it, and the two three-pin connectors from the schematic &mdash; J1 for the
+          battery, J2 out to the fan.
+        </figcaption>
+      </figure>
+
+      <figure class="shot-item">
+        <button type="button" class="shot" aria-label="Open photo 5: the demonstration running at the exhibition."
+                data-i18n-aria="shot4Aria">
+          <picture>
+            <source srcset="bci-04.webp" type="image/webp">
+            <img src="bci-04.jpg" loading="lazy" width="620" height="827"
+                 data-ph="bci-04.jpg &middot; 620 &times; 827"
+                 alt="The stand in use: the tube standing on the table beside a monitor showing the live brainwave dashboard, with visitors gathered around."
+                 data-i18n-alt="bci4Alt">
+          </picture>
+        </button>
+        <figcaption data-i18n="cap4">
+          <strong>Running for visitors.</strong> The stand at the 13th Engineering Design Day,
+          with the brainwave dashboard live on the monitor.
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== THE TEAM ==================== -->
+<section class="band alt" aria-labelledby="team-h">
+  <div class="wrap teamwrap">
+    <h2 id="team-h" data-i18n="teamH">The team</h2>
+
+    <div class="teamphotos">
+      <figure class="teamphoto">
+        <picture>
+          <source srcset="team-group.webp" type="image/webp">
+          <img src="team-group.jpg" loading="lazy" width="700" height="933"
+               data-ph="team-group.jpg &middot; 700 &times; 933"
+               alt="The two students and their supervisor standing behind the project stand, with the tube and the dashboard monitor on the table in front of them."
+               data-i18n-alt="teamPhotoAlt">
+        </picture>
+        <figcaption data-i18n="teamCap">
+          The team with their supervisor at the 13th Engineering Design Day,
+          University of Duhok.
+        </figcaption>
+      </figure>
+
+      <figure class="teamphoto">
+        <picture>
+          <source srcset="team-certificates.webp" type="image/webp">
+          <img src="team-certificates.jpg" loading="lazy" width="700" height="933"
+               data-ph="team-certificates.jpg &middot; 700 &times; 933"
+               alt="Ali Azhar Dewali and Mansour Azad standing either side of the project poster on an easel, each holding a certificate of participation."
+               data-i18n-alt="certPhotoAlt">
+        </picture>
+        <figcaption data-i18n="certCap">
+          Ali Azhar Dewali (left) and Mansour Azad (right) with their certificates of
+          participation and the project poster.
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="sup">
+      <span class="avatar avatar-lg" data-initials="SA">
+        <picture>
+          <source srcset="team-supervisor.webp" type="image/webp">
+          <img src="team-supervisor.jpg" width="288" height="288" loading="lazy" alt="">
+        </picture>
+      </span>
+      <div class="sup-text">
+        <p class="sup-role" data-i18n="supRole">Supervisor</p>
+        <p class="sup-name">Dr. Soleen Jaladet Al-Sofi</p>
+        <p class="sup-org" data-i18n="supOrg">Department of Biomedical Engineering, College of Engineering, University of Duhok</p>
+        <p class="contact">
+          <a href="mailto:soleen.alsofi@uod.ac">soleen.alsofi@uod.ac</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="team">
+      <div class="member">
+        <span class="avatar" data-initials="AA">
+          <picture>
+            <source srcset="team-ali.webp" type="image/webp">
+            <img src="team-ali.jpg" width="288" height="288" loading="lazy" alt="">
+          </picture>
+        </span>
+        <div class="member-text">
+          <p class="name">Ali Azhar Dewali</p>
+          <p class="role" data-i18n="roleTeam">Project team</p>
+          <p class="contact">
+            <a href="mailto:ali.azhar.dewali@gmail.com">ali.azhar.dewali@gmail.com</a><br>
+            <a href="tel:+9647507924022" dir="ltr">+964 750 792 4022</a>
+          </p>
+        </div>
+      </div>
+      <div class="member">
+        <span class="avatar" data-initials="MA">
+          <picture>
+            <source srcset="team-mansour.webp" type="image/webp">
+            <img src="team-mansour.jpg" width="288" height="288" loading="lazy" alt="">
+          </picture>
+        </span>
+        <div class="member-text">
+          <p class="name">Mansour Azad</p>
+          <p class="role" data-i18n="roleTeam">Project team</p>
+          <p class="contact">
+            <a href="mailto:mansoor.ai2423@stu.uod.ac">mansoor.ai2423@stu.uod.ac</a><br>
+            <a href="tel:+9647501668669" dir="ltr">+964 750 166 8669</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p class="dept" data-i18n="dept">
+      Department of Biomedical Engineering &middot; College of Engineering &middot; University of Duhok
+    </p>
+  </div>
+</section>
+
+<!-- ==================== TECHNICAL DETAILS ==================== -->
+<section class="band" aria-labelledby="tech-h">
+  <div class="wrap">
+    <h2 id="tech-h" class="vh" data-i18n="techH">Technical details</h2>
+
+    <details class="tech">
+      <summary>
+        <span class="sum-t" data-i18n="sumT">Technical details</span>
+        <span class="sum-s" data-i18n="sumS">Components, the focus formula, timing, test results, limitations</span>
+      </summary>
+
+      <div class="tech-body">
+
+        <p class="tech-title" data-i18n="techTitle">
+          Full project title: <em>EEG-Based Motor Speed Control System Using a Brain&#8211;Computer Interface</em>
+        </p>
+
+        <h3 data-i18n="hComp">Components</h3>
+        <table>
+          <caption class="vh" data-i18n="capComp">Bill of materials</caption>
+          <thead><tr><th scope="col" data-i18n="thPart">Part</th><th scope="col" data-i18n="thRole">Role</th></tr></thead>
+          <tbody>
+            <tr><td>NeuroSky MindWave Mobile 2</td><td data-i18n="rHeadset">Single dry electrode at Fp1 with an ear-clip reference. Sends 8 band powers over Bluetooth</td></tr>
+            <tr><td>ESP32-WROOM-32</td><td data-i18n="rEsp">Receives the focus value over USB serial and generates the PWM</td></tr>
+            <tr><td>Q1 &mdash; IRLZ44N</td><td data-i18n="rMosfet">Logic-level N-channel MOSFET, low-side switch for the fan</td></tr>
+            <tr><td>D1 &mdash; SS36</td><td data-i18n="rDiode">Schottky flyback diode across the fan, cathode to V+. Clamps the inductive spike when the fan switches off</td></tr>
+            <tr><td>R1 &mdash; 220 &Omega;</td><td data-i18n="rRes">Limits gate inrush current during fast switching</td></tr>
+            <tr><td>R2 &mdash; 6.8 k&Omega;</td><td data-i18n="rPull">Gate pull-down. Holds the MOSFET off whenever the ESP32 pin is not actively driving it, including during reset and boot</td></tr>
+            <tr><td>C1</td><td data-i18n="rCap">Ceramic snubber capacitor across the fan, in parallel with D1. Damps high-frequency switching noise.</td></tr>
+            <tr><td data-i18n="pFan">Small DC fan</td><td data-i18n="rFan">Airflow source, driven by PWM from the battery rail</td></tr>
+            <tr><td data-i18n="pBatt">Battery pack <span class="dim">(V+ &asymp; 4.2 V)</span></td><td data-i18n="rBatt">Powers the fan through connector J1. The rig is self-contained &mdash; no bench supply</td></tr>
+            <tr><td data-i18n="pBall">Ping-pong ball <span class="dim">(2.7 g, 40 mm)</span></td><td data-i18n="rBall">Makes the signal visible</td></tr>
+            <tr><td data-i18n="pTube">3D-printed nozzle and tube</td><td data-i18n="rTube">PLA, designed in Fusion 360. Directs the airflow and re-centres the ball</td></tr>
+          </tbody>
+        </table>
+
+        <h3 data-i18n="hCircuit">Circuit</h3>
+        <ul class="plain">
+          <li data-i18n="ci1">ESP32 <b>GPIO4</b> &rarr; R1 220 &Omega; &rarr; <b>gate</b> of Q1</li>
+          <li data-i18n="ci2">R2 6.8 k&Omega; from the gate to <b>GND</b>, so the gate is never left floating</li>
+          <li data-i18n="ci3">Q1 <b>drain</b> &rarr; FAN&minus; &middot; Q1 <b>source</b> &rarr; GND, shared with the ESP32 and the battery</li>
+          <li data-i18n="ci4">Fan V+ and battery V+ sit on the same rail, <b>V+ &asymp; 4.2 V</b></li>
+          <li data-i18n="ci5">D1 SS36 across the fan: cathode to V+, anode to FAN&minus; at the drain</li>
+          <li data-i18n="ci6">C1 across the fan, in parallel with D1 (drain/FAN&minus; to V+)</li>
+          <li data-i18n="ci7">Two connectors: <b>J1</b> battery in (V+, NC, GND) and <b>J2</b> fan out (GND, FAN&minus;, V+)</li>
+        </ul>
+
+        <figure class="schem">
+          <!-- PNG only, no webp source: for flat line art a 16-colour PNG came out
+               22 KB against 48 KB for lossless webp, and a browser would prefer the
+               webp source if one were offered. Same reasoning as the logos. -->
+          <picture>
+            <img src="schematic.png" loading="lazy" width="1578" height="1137"
+                 data-ph="schematic.png &middot; 1578 &times; 1137"
+                 alt="Circuit schematic: the ESP32's GPIO4 drives the gate of an IRLZ44N MOSFET through a 220 ohm resistor, with a 6.8 kilohm pull-down holding the gate low. The MOSFET's drain switches the fan's negative terminal. An SS36 Schottky diode and a ceramic snubber capacitor sit across the fan in parallel with each other, returning to the 4.2 volt rail. Two three-pin connectors carry the battery in and the fan out."
+                 data-i18n-alt="schemAlt">
+          </picture>
+          <figcaption data-i18n="schemCap">
+            The switching circuit. The ESP32 never carries fan current &mdash; it only pulls the
+            MOSFET's gate up and down, and R2 holds that gate low while the board is booting.
+            D1 and C1 sit across the fan to absorb the voltage spike and the switching noise it
+            throws back each time the current is cut.
+          </figcaption>
+        </figure>
+
+        <h3 data-i18n="hFormula">The focus formula</h3>
+        <p data-i18n="fIntro">
+          The headset reports eight band powers once per second. The formula weighs the two Beta
+          bands, which rise with concentration, against the Alpha and Theta bands, which rise with
+          relaxation.
+        </p>
+        <pre class="code" dir="ltr"><code>raw_focus = (L-Beta + H-Beta)
+            / (L-Alpha + H-Alpha + Theta + 0.1)</code></pre>
+        <ul class="plain">
+          <li data-i18n="f1">The <b>+ 0.1</b> prevents a divide by zero.</li>
+          <li data-i18n="f2">Band powers are stored as <b>log10(raw + 1)</b>, so the ratio is computed on log-scaled values.</li>
+          <li data-i18n="f3"><b>Delta and Gamma are deliberately excluded</b> &mdash; Delta is irrelevant while awake, and Gamma is too noisy for a single dry electrode.</li>
+          <li data-i18n="f4">The raw ratio is remapped linearly from a physiological window of about <b>0.3&ndash;0.7</b> onto <b>0&ndash;1</b>, then scaled to a <b>0&ndash;100</b> byte.</li>
+          <li data-i18n="f5">The value is smoothed exponentially before it is sent, so the fan gets a calm signal.</li>
+        </ul>
+
+        <h3 data-i18n="hBands">The eight bands</h3>
+        <table>
+          <caption class="vh" data-i18n="capBands">EEG frequency bands reported by the headset</caption>
+          <thead><tr><th scope="col" data-i18n="thBand">Band</th><th scope="col" data-i18n="thRange">Range</th><th scope="col" data-i18n="thState">State</th></tr></thead>
+          <tbody>
+            <tr><td>Delta</td><td dir="ltr">0.5&ndash;4 Hz</td><td data-i18n="bDelta">Deep sleep</td></tr>
+            <tr><td>Theta</td><td dir="ltr">4&ndash;8 Hz</td><td data-i18n="bTheta">Drowsiness, relaxation</td></tr>
+            <tr><td>Low-Alpha</td><td dir="ltr">8&ndash;10 Hz</td><td data-i18n="bLA">Relaxed</td></tr>
+            <tr><td>High-Alpha</td><td dir="ltr">10&ndash;13 Hz</td><td data-i18n="bHA">Relaxed, mildly alert</td></tr>
+            <tr><td>Low-Beta</td><td dir="ltr">13&ndash;17 Hz</td><td data-i18n="bLB">Light focus</td></tr>
+            <tr><td>High-Beta</td><td dir="ltr">17&ndash;30 Hz</td><td data-i18n="bHB">Strong focus</td></tr>
+            <tr><td>Low-Gamma</td><td dir="ltr">30&ndash;40 Hz</td><td data-i18n="bLG">High-level cognition</td></tr>
+            <tr><td>Mid-Gamma</td><td dir="ltr">40&ndash;100 Hz</td><td data-i18n="bMG">Intense concentration</td></tr>
+          </tbody>
+        </table>
+        <p class="note" data-i18n="bandsNote">
+          All eight are present in the brain at the same time. What changes is their relative power.
+        </p>
+
+        <h3 data-i18n="hTiming">Timing</h3>
+        <ul class="plain">
+          <li data-i18n="t1">Headset to laptop: ThinkGear serial protocol at 57600 baud, checksum verified per packet.</li>
+          <li data-i18n="t2">Laptop to ESP32: one byte, 0&ndash;100, every 30 ms at 115200 baud &mdash; about 0.3% of the link.</li>
+          <li data-i18n="t3">PWM: 25 kHz, 8-bit, on the ESP32 LEDC peripheral.</li>
+          <li data-i18n="t4">Below 20% focus the fan is switched hard off. From 20% to 100% the duty cycle is mapped onto 132&ndash;255 &mdash; 132 is the lowest duty at which the fan actually turns.</li>
+          <li data-i18n="t5"><b>End to end: 60&ndash;100 ms.</b> It feels immediate.</li>
+        </ul>
+
+        <h3 data-i18n="hSupply">Supply voltage test &mdash; earlier version</h3>
+        <p data-i18n="supIntro">
+          An earlier build used a large fan rated for 12 V, driven well past its rating from an
+          adjustable bench supply, because at 12 V the airflow was not strong enough to hold the
+          ball up. These were the results:
+        </p>
+        <table>
+          <caption class="vh" data-i18n="capSup">Ball behaviour at different supply voltages</caption>
+          <thead><tr><th scope="col" data-i18n="thSupply">Supply</th><th scope="col" data-i18n="thResult">Result</th></tr></thead>
+          <tbody>
+            <tr><td dir="ltr">12 V</td><td data-i18n="v12">Ball lifts slightly, then drops back</td></tr>
+            <tr><td dir="ltr">15 V</td><td data-i18n="v15">Lifts, but holds no stable height</td></tr>
+            <tr><td dir="ltr">18 V</td><td data-i18n="v18">Sits around the middle of the tube</td></tr>
+            <tr class="good"><td dir="ltr">20&ndash;25 V</td><td data-i18n="v20">Full control range, bottom to top. Best</td></tr>
+          </tbody>
+        </table>
+        <p class="note" data-i18n="supNote1">
+          Above 25 V the ball still did not fly out. The tapered nozzle creates a low-pressure
+          region by the Bernoulli effect, which pulls the ball back to the centre. That is a
+          property of the design, not luck.
+        </p>
+        <p class="note" data-i18n="supNote2">
+          <b>The current build uses a smaller fan running from a battery pack at about 4.2 V</b>, so
+          it no longer needs a bench supply and the whole rig is self-contained. The test above is
+          kept because it is what led there.
+        </p>
+
+        <h3 data-i18n="hRel">Reliability at the booth</h3>
+        <ul class="plain">
+          <li data-i18n="r1">A signal-quality gate forces the focus value to zero when the electrode is not making good contact, so the fan cannot run on noise.</li>
+          <li data-i18n="r2">If the headset disconnects, the software sends zero to the ESP32, closes the port, waits and reconnects on its own.</li>
+          <li data-i18n="r3">The firmware writes a duty cycle of zero on boot, so the fan is off at power-up.</li>
+        </ul>
+
+        <h3 data-i18n="hLim">Known limitations</h3>
+        <ol class="plain num">
+          <li data-i18n="l1"><b>One electrode.</b> The system can read the general level of concentration and nothing more specific. It cannot distinguish particular thoughts.</li>
+          <li data-i18n="l2"><b>3.3 V gate drive.</b> The ESP32 pin turns the logic-level MOSFET on but does not drive it into full saturation. A dedicated gate-driver IC would fix this.</li>
+          <li data-i18n="l3"><b>Per-user baseline.</b> The mapping range that suits one person is slightly off for the next. Automatic per-session calibration is future work.</li>
+          <li data-i18n="l4"><b>Smoothing trade-off.</b> Smoothing makes the ball steadier but adds a fraction of a second of lag.</li>
+        </ol>
+
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ==================== LINKS ==================== -->
+<section class="band alt" aria-labelledby="links-h">
+  <div class="wrap">
+    <h2 id="links-h" data-i18n="linksH">Links</h2>
+
+    <div class="links">
+
+      <!-- The report is not published. It is sent on request, so this is a mail
+           link rather than a download. Nothing is hosted for it. -->
+      <a class="link" href="mailto:ali.azhar.dewali@gmail.com?subject=Request%20for%20the%20EEG%20BCI%20project%20report&amp;body=Hello%2C%0A%0AI%20would%20like%20to%20read%20the%20full%20report%20for%20the%20EEG-based%20brain%E2%80%93computer%20interface%20project.%0A%0AMy%20name%3A%20%0AUniversity%20or%20organisation%3A%20%0AWhat%20I%20need%20it%20for%3A%20%0A%0AThank%20you.">
+        <span class="link-k" data-i18n="lkReport">Report</span>
+        <span class="link-t" data-i18n="ltReport">Request the full report</span>
+        <span class="link-d" data-i18n="ldReport">Sent on request. Tell us who you are and what you need it for</span>
+      </a>
+
+      <a class="link" href="https://aliazhardewali-pixel.github.io/" rel="noopener">
+        <span class="link-k" data-i18n="lkFolio">Portfolio</span>
+        <span class="link-t">Ali Azhar Dewali</span>
+        <span class="link-d" dir="ltr">aliazhardewali-pixel.github.io</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="fine" data-i18n="foot1">
+      Department of Biomedical Engineering, College of Engineering<br>
+      University of Duhok
+    </p>
+    <p class="fine" data-i18n="foot2">Exhibited at MEDICO 2026, Erbil &middot; MedStar section</p>
+  </div>
+</footer>
+
+<!-- ==================== LIGHTBOX ==================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <button class="lb-close" id="lbClose" aria-label="Close photo viewer" data-i18n-aria="lbClose">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous photo" data-i18n-aria="lbPrev">&#8249;</button>
+  <figure class="lb-fig">
+    <img id="lbImg" alt="">
+  </figure>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo" data-i18n-aria="lbNext">&#8250;</button>
+</div>
+
+<script src="script.js?v=6" charset="utf-8" defer></script>
+
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://eegbci.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+</body>
+</html>

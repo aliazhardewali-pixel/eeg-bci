@@ -1,0 +1,20 @@
+# Source material — the originals, ~190 MB of HEIC and PowerPoint.
+# Everything the site needs has already been converted into the repo root.
+project_images/
+team images/
+medico/
+final report, presentation and design day things/
+
+# Internal working notes, not part of the published site
+PROJECT_BRIEF.md
+TODO.md
+
+# The report is sent on request, never published. Keep it out of the repo
+# so it can't be downloaded from the site or read out of the git history.
+EEG-BCI-Report.pdf
+*.pdf
+
+# OS noise
+Thumbs.db
+desktop.ini
+.DS_Store
