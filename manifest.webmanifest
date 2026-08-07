@@ -1,0 +1,21 @@
+{
+  "name": "EEG Brain-Computer Interface",
+  "short_name": "EEG BCI",
+  "description": "Control a machine with your mind - MEDICO 2026, University of Duhok",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0B0F16",
+  "theme_color": "#0B0F16",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

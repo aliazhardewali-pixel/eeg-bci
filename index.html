@@ -13,7 +13,15 @@
 <meta property="og:image" content="og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="stylesheet" href="style.css?v=8">
+<!-- browser tab icon. Relative paths so it works whether the site is served
+     from the domain root or from a sub-path. -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<link rel="stylesheet" href="style.css?v=9">
 </head>
 <body>
 
@@ -644,7 +652,7 @@
   <button class="lb-nav lb-next" id="lbNext" aria-label="Next photo" data-i18n-aria="lbNext">&#8250;</button>
 </div>
 
-<script src="script.js?v=8" charset="utf-8" defer></script>
+<script src="script.js?v=9" charset="utf-8" defer></script>
 
 <!-- GoatCounter analytics -->
 <script data-goatcounter="https://eegbci.goatcounter.com/count"
