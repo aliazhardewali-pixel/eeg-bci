@@ -18,3 +18,7 @@ EEG-BCI-Report.pdf
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# your own working files, not part of the published site
+qr_pagesdev.png
+qr-card-a5.*
