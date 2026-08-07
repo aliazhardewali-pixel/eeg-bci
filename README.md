@@ -86,6 +86,6 @@ Bump the cache-busting number in `index.html` so returning phones pick up the ch
 - **The report link** only appears when `EEG-BCI-Report.pdf` really exists and the site is
   served over http(s). In a local `file://` preview it stays hidden.
 - **Analytics** is GoatCounter at the bottom of `index.html`. Register the site code
-  `eegbci` at goatcounter.com, or change the URL to whichever code you register.
+  `eeg-bci` at goatcounter.com, or change the URL to whichever code you register.
 - **Facts come from `PROJECT_BRIEF.md`** plus the hardware corrections you gave me. If a
   number changes, change it in the Technical details section and in `AR`.
