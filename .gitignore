@@ -22,3 +22,10 @@ desktop.ini
 # your own working files, not part of the published site
 qr_pagesdev.png
 qr-card-a5.*
+
+# The video is hosted on YouTube, never served from here. The original is
+# 111 MB — committing it would publish it and blow past Cloudflare's 25 MB
+# per-file limit.
+*.MOV
+*.mov
+*.mp4

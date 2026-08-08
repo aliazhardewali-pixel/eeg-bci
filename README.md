@@ -10,11 +10,15 @@ See [TODO.md](TODO.md) for the few things still open.
 
 ## Live site
 
-**https://aliazhardewali-pixel.github.io/eeg-bci/**
+**https://eeg-bci.pages.dev/**
 
-Served by GitHub Pages from the `main` branch, root folder. That is the URL `qr.svg`
-encodes. If the repository is ever renamed, the Pages URL changes and **the QR code stops
-working** — regenerate it, see the end of TODO.md.
+Served by Cloudflare Pages from the `main` branch, root folder — Cloudflare builds on its own
+infrastructure, so a GitHub Actions outage cannot take the site down. That is the URL the QR
+codes encode. If the Cloudflare project is ever renamed the URL changes and **every printed QR
+code stops working** — regenerate them, see the end of TODO.md.
+
+Cloudflare has a **25 MB limit per file**, which is why the video is on YouTube rather than
+served from here.
 
 ## Publishing a change
 
@@ -24,7 +28,7 @@ git commit -m "what changed"
 git push
 ```
 
-Pages redeploys on its own, usually within a minute.
+Cloudflare redeploys on its own, usually within a minute.
 
 `.gitignore` keeps the source material out of the repository: `project_images/`,
 `team images/`, `medico/` and `final report, presentation and design day things/` hold the
@@ -32,24 +36,24 @@ originals, around 190 MB of HEIC and PowerPoint files. Everything the site needs
 been converted into the repository root. `PROJECT_BRIEF.md` and `TODO.md` are also excluded
 as internal notes — delete those two lines from `.gitignore` if you want them published.
 
-## Where the YouTube ID goes
+## The video
 
-Open `script.js`. The first line of code is:
-
-```js
-const YOUTUBE_ID = 'YOUTUBE_ID';
-```
-
-Replace it with the video's ID — the part after `v=` in the watch URL, so
-`https://www.youtube.com/watch?v=dQw4w9WgXcQ` becomes:
+The first line of code in `script.js` holds the YouTube ID, and it is already set:
 
 ```js
-const YOUTUBE_ID = 'dQw4w9WgXcQ';
+const YOUTUBE_ID = 'R_bfxC4xN5M';
 ```
 
-That is the only edit. Until it is done the poster reads "Video coming soon" and tapping it
-does nothing. Nothing is fetched from youtube.com until a visitor taps play, which is the
-main reason the page stays quick on exhibition wifi.
+To swap in a different video, replace that one string with the new ID — the part after `v=` in
+the watch URL — and nothing else. Setting it back to the literal `'YOUTUBE_ID'` returns the
+poster to its "Video coming soon" state.
+
+The video is **unlisted**, not private: private videos cannot be embedded at all, the player
+just shows an error. "Allow embedding" must also stay on in YouTube Studio.
+
+Nothing is fetched from youtube.com until a visitor taps the poster, which is the main reason
+the page stays quick on exhibition wifi. The poster image is a real photo of the system, so
+there is something to look at either way.
 
 ## The Arabic version
 
@@ -69,11 +73,11 @@ Layout mirroring is done with CSS logical properties, so nothing needs a second 
 Bump the cache-busting number in `index.html` so returning phones pick up the change:
 
 ```html
-<link rel="stylesheet" href="style.css?v=6">
-<script src="script.js?v=6" charset="utf-8" defer></script>
+<link rel="stylesheet" href="style.css?v=11">
+<script src="script.js?v=11" charset="utf-8" defer></script>
 ```
 
-`v=3` becomes `v=4`, and so on. Replacing a photo needs no bump.
+`v=11` becomes `v=12`, and so on — both lines together. Replacing a photo needs no bump.
 
 ## Notes
 
