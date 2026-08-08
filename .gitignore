@@ -19,9 +19,12 @@ Thumbs.db
 desktop.ini
 .DS_Store
 
-# your own working files, not part of the published site
+# your own working files, not part of the published site.
+# The print cards are yours to print — they must never reach the live site.
 qr_pagesdev.png
 qr-card-a5.*
+qr-only-a5.*
+qr-only-square.*
 
 # The video is hosted on YouTube, never served from here. The original is
 # 111 MB — committing it would publish it and blow past Cloudflare's 25 MB
